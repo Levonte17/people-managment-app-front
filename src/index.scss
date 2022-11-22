@@ -1,13 +1,59 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+//VARIABLES
+$main-font: Arial, Helvetica, sans-serif;
+$main-color: black;
+$contrast-color: white;
+// MIXIN PRESETS
+@mixin flex-container-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+@mixin white-text-black-bg {
+  color: $contrast-color;
+  background-color: $main-color;
+} 
+ @mixin black-text-white-bg {
+  font-family: $main-font;
+  color: $main-color;
+  background-color: $contrast-color;  
+ } 
+* {
+  margin: 0;
+}
+.avatar-image {
+  height: 12.5rem;
+  width: 12.5rem;
+  border-radius: 50%;
+}
+.auth-options {
+  display: flex;
+  align-items: center; 
+  div{
+    margin-right: 1.5rem;
+    cursor: pointer;
+  } &:hover {
+    text-decoration: underline;
+  }
+  }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  box-sizing: border-box
+}
+ .nav {
+  @include white-text-black-bg;
+  @include flex-container-centered;
+  a {
+    @include white-text-black-bg;
+    text-decoration: none;
+    font-family: $main-font;
+    div {
+      margin: 1rem;
+      font-size: large;
+    }
+  }
+ }
+@media (min-width: 768px){
+  .nav {
+    justify-content: flex-start;
+  }
 }
